@@ -2,10 +2,5 @@
 	"name": "com.osk.uifeel",
 	"version": "1.0.0",
 	"displayName": "UI FEEL",
-	"description": "This is UI FEEL"
-	"unity": "2021.3.14",
-	"author":
-	{
-		"name": "OSK"
-	}
+	"description": "This is UI Feel"
 }
