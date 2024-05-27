@@ -58,9 +58,6 @@ namespace OSK
             if (isScaler)
                 Tweener.Instance.ScaleTo(transform, Vector3.one * scaleHover, 0.2f, 0f, TweenEasings.QuadraticEaseOut);
             //Invoke("RemoveHover", 0.25f);
-
-            AudioManager.Instance.Lowpass(false);
-            AudioManager.Instance.Highpass(false);
         }
 
         private void RemoveHover()
@@ -69,7 +66,7 @@ namespace OSK
         }
 
         public void OnPointerEnter(PointerEventData eventData)
-        {
+        {   
             if (done) return;
             hovered = true;
 

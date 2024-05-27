@@ -1,10 +1,11 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
 namespace OSK
 {
-    public class ScreenManager : SingletonMono<ScreenManager>
+    public class ScreenManager : MonoBehaviour
     {
         [ContextMenu("GetOrAdd_AllScreens")]
         public void GetAllScreenForChild()
@@ -20,6 +21,8 @@ namespace OSK
                 }
             }
         }
+        
+        public static ScreenManager Instance { get; private set; }
 
         public List<UIScreen> Screens = null;
 
@@ -47,6 +50,12 @@ namespace OSK
         /// Invoked when ShowScreen is called
         /// </summary>
         public System.Action<UIScreen> OnShowingScreen;
+
+        private void Awake()
+        {
+            Instance = this;
+        }
+
 
         public void Setup()
         {

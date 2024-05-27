@@ -1,10 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace OSK
 {
-    public class DialogManager : SingletonMono<DialogManager>
+    public class DialogManager : MonoBehaviour
     {
+        public static DialogManager Instance { get; private set; }
         public List<Dialog> Dialogs = null;
         public Transform canvas;
 
@@ -22,7 +24,12 @@ namespace OSK
                 }
             }
         }
-        
+
+        private void Awake()
+        {
+            Instance = this;
+        }
+
         public void Setup()
         {
             for (int i = 0; i < Dialogs.Count; i++)
