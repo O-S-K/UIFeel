@@ -31,7 +31,7 @@ namespace OSK
         private void OpenMouth()
         {
             spriteRenderer.enabled = true;
-            Tweener.ScaleToQuad(transform, openScale, openSpeed);
+            //Tweener.ScaleToQuad(transform, openScale, openSpeed);
             CancelInvoke(nameof(CloseMouth));
             CancelInvoke(nameof(AfterClose));
             Invoke(nameof(CloseMouth), closeDelay);
@@ -44,7 +44,7 @@ namespace OSK
 
         private void CloseMouth()
         {
-            Tweener.ScaleToQuad(transform, openScale, closeSpeed);
+            //Tweener.ScaleToQuad(transform, openScale, closeSpeed);
             CancelInvoke(nameof(AfterClose));
             Invoke(nameof(AfterClose), closeSpeed);
         }
