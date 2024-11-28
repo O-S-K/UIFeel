@@ -26,7 +26,7 @@ namespace OSK
         {
             if (paths == null || paths.Count == 0)
             {
-                Logg.LogWarning("Path points are not defined!");
+                Debug.LogWarning("Path points are not defined!");
                 return;
             }
 

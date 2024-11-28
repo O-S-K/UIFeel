@@ -5,9 +5,17 @@ using UnityEngine.Events;
 
 namespace OSK
 {
+   
+
     [System.Serializable]
     public class TweenSettings
     {
+        public enum TypeAnim
+        {
+            Ease,
+            Curve
+        }
+
         public Transform root;
         public bool playOnEnable = true;
         public bool setAutoKill = true;
@@ -19,12 +27,12 @@ namespace OSK
         [ShowIf(nameof(loopcount), -1)] 
         public LoopType loopType = LoopType.Restart;
 
-        public TypeAnimation typeAnim = TypeAnimation.Ease;
+        public TypeAnim typeAnim = TypeAnim.Ease;
 
-        [ShowIf(nameof(typeAnim), TypeAnimation.Ease)]
+        [ShowIf(nameof(typeAnim), TypeAnim.Ease)]
         public Ease ease = Ease.Linear;
 
-        [ShowIf(nameof(typeAnim), TypeAnimation.Curve)]
+        [ShowIf(nameof(typeAnim), TypeAnim.Curve)]
         public AnimationCurve curve;
 
         public UpdateType updateType = UpdateType.Normal;
@@ -75,7 +83,7 @@ namespace OSK
                 .OnComplete(() => settings.eventCompleted?.Invoke());
 
 
-            if (settings.typeAnim == TypeAnimation.Ease)
+            if (settings.typeAnim == TweenSettings.TypeAnim.Ease)
                 tweener.SetEase(settings.ease);
             else
                 tweener.SetEase(settings.curve);

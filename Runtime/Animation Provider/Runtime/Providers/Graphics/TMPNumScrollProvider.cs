@@ -43,7 +43,7 @@ namespace OSK
         {
             if (GetComponent<TextLoadingAnimationProvider>() != null)
             {
-                Logg.LogError("TextLoadingAnimationProvider is already attached to this GameObject. Please remove it before adding TextLoadingAnimationProvider.");
+                Debug.LogError("TextLoadingAnimationProvider is already attached to this GameObject. Please remove it before adding TextLoadingAnimationProvider.");
                 enabled = false;
             }
         }

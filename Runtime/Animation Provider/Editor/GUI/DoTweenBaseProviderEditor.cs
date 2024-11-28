@@ -124,7 +124,7 @@ namespace OSK
                             }
                             else if (provider.GetComponent<RectTransform>() != null)
                             {
-                                rootValueProperty.objectReferenceValue = provider.transform.GetRectTransform();
+                                rootValueProperty.objectReferenceValue = provider.transform.GetComponent<RectTransform>();
                             }
                             break;
                     }
@@ -282,7 +282,7 @@ namespace OSK
             EditorGUILayout.PropertyField(serializedObject.FindProperty("settings.typeAnim"),
                 new GUIContent("Type Animation"));
 
-            if (provider.settings.typeAnim == TypeAnimation.Ease)
+            if (provider.settings.typeAnim == TweenSettings.TypeAnim.Ease)
             {
                 EditorGUILayout.PropertyField(serializedObject.FindProperty("settings.ease"), new GUIContent("Ease"));
             }

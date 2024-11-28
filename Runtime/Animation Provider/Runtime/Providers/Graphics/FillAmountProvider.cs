@@ -19,13 +19,13 @@ namespace OSK
         {
             if (image.sprite == null)
             {
-                Logg.LogWarning("Sprite is null");
+                Debug.LogWarning("Sprite is null");
                 return;
             }
 
             if (image.type != Image.Type.Filled)
             {
-                Logg.LogWarning("Image type is not filled");
+                Debug.LogWarning("Image type is not filled");
                 return;
             }
 

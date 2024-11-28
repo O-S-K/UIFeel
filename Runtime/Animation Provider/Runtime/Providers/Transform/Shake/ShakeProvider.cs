@@ -36,7 +36,7 @@ namespace OSK
             _originalScale = RootTransform.localScale;
 
             
-            var rs = (isRandom) ? RandomUtils.RandomVector3(-strength, strength) : strength;
+            var rs = (isRandom) ? Extension.RandomVector3(-strength, strength) : strength;
             tweener = typeShake switch
             {
                 

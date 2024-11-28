@@ -257,7 +257,7 @@ namespace OSK
             for (int i = 1; i <= segments; i++)
             {
                 float t = i / (float)segments;
-                Vector3 pointOnCurve = OSK.MathUtils.CalculateCatmullRom(p0, p1, p2, p3, t);
+                Vector3 pointOnCurve =  CalculateCatmullRom(p0, p1, p2, p3, t);
                 Handles.DrawLine(previousPoint, pointOnCurve);
                 previousPoint = pointOnCurve;
             }
@@ -272,10 +272,35 @@ namespace OSK
             for (int i = 1; i <= segments; i++)
             {
                 float t = i / (float)segments;
-                Vector3 pointOnCurve = OSK.MathUtils.CalculateCubicBezierPoint(t, p0, p1, p2, p3);
+                Vector3 pointOnCurve = CalculateCubicBezierPoint(t, p0, p1, p2, p3);
                 Handles.DrawLine(previousPoint, pointOnCurve);
                 previousPoint = pointOnCurve;
             }
+        }
+
+        public static Vector3 CalculateCubicBezierPoint(float t, Vector3 p0, Vector3 p1, Vector3 p2, Vector3 p3)
+        {
+            float u = 1 - t;
+            float tt = t * t;
+            float uu = u * u;
+            float uuu = uu * u;
+            float ttt = tt * t;
+
+            return uuu * p0 + 3 * uu * t * p1 + 3 * u * tt * p2 + ttt * p3;
+        }
+        public static Vector3 CalculateCatmullRom(Vector3 p0, Vector3 p1, Vector3 p2, Vector3 p3, float t)
+        {
+            float t2 = t * t;
+            float t3 = t2 * t;
+
+            Vector3 result = 0.5f * (
+                (2f * p1) +
+                (-p0 + p2) * t +
+                (2f * p0 - 5f * p1 + 4f * p2 - p3) * t2 +
+                (-p0 + 3f * p1 - 3f * p2 + p3) * t3
+            );
+
+            return result;
         }
     }
 }

@@ -41,7 +41,7 @@ namespace OSK
             }
             else
             {
-                Logg.LogError("Text is null");
+                Debug.LogError("Text is null");
             }
 
             base.ProgressTween();
@@ -65,7 +65,7 @@ namespace OSK
         {
             if (GetComponent<TMPNumScrollProvider>() != null)
             {
-                Logg.LogError("TMPNumScrollProvider is already attached to this GameObject. Please remove it before adding TextLoadingAnimationProvider.");
+                Debug.LogError("TMPNumScrollProvider is already attached to this GameObject. Please remove it before adding TextLoadingAnimationProvider.");
                 enabled = false;
             }
         }
