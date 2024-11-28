@@ -3,4 +3,9 @@
 	"version": "1.0.0",
 	"displayName": "UI FEEL",
 	"description": "This is UI Feel"
+ 	"dependencies": 
+	{
+        	"com.unity.textmeshpro": "3.0.6",
+        	"com.demigiant.dotween": "1.2.632"
+    	}
 }

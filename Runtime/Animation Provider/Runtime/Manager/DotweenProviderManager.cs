@@ -15,7 +15,7 @@ namespace OSK
 
         public UpdateType updateType = UpdateType.Normal;
         public bool useUnscaledTime = false;
-        public DoTweenBaseProvider providers;
+        public DoTweenBaseProvider[] providers;
 
 
         private void Awake()

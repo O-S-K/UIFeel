@@ -1,16 +1,17 @@
 {
     "name": "UIFeel",
     "rootNamespace": "",
-    "references": [],
+    "references": [
+        "DOTween.Modules",
+        "Unity.TextMeshPro"
+    ],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,
     "precompiledReferences": [],
     "autoReferenced": true,
-    "defineConstraints": [
-        "EPO_DOTWEEN"
-    ],
+    "defineConstraints": [],
     "versionDefines": [],
     "noEngineReferences": false
 }
