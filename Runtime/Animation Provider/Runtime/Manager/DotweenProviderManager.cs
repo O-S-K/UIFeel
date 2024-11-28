@@ -15,8 +15,9 @@ namespace OSK
 
         public UpdateType updateType = UpdateType.Normal;
         public bool useUnscaledTime = false;
-         
- 
+        public DoTweenBaseProvider providers;
+
+
         private void Awake()
         {
             SetupSetting();
@@ -25,7 +26,7 @@ namespace OSK
         
         public void AddProvider()
         {
-            var providers = GetComponentsInChildren<DoTweenBaseProvider>();
+            providers = GetComponentsInChildren<DoTweenBaseProvider>();
             foreach (var provider in providers)
             {
                 provider.InitFromMG(playOnEnable, setAutoKill, updateType, useUnscaledTime);

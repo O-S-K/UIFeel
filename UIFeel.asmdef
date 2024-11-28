@@ -1,0 +1,16 @@
+{
+    "name": "UIFeel",
+    "rootNamespace": "",
+    "references": [],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [
+        "EPO_DOTWEEN"
+    ],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
