@@ -11,7 +11,7 @@ namespace OSK
         public  int indexPathSelect;
 
 
-        [MenuItem("OSK-Framework/Path Editor/Move Along Path Editor")]
+        [MenuItem("OSK-Framework/Tools/Path Editor/Move Along Path Editor")]
         public static void ShowWindow()
         {
             GetWindow<MoveAlongPathEditorWindow>("Path Editor");
