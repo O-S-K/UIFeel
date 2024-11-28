@@ -1,6 +1,5 @@
 using UnityEngine;
 using DG.Tweening;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace OSK
@@ -26,7 +25,7 @@ namespace OSK
             var blendable = null != arr && arr.Length > 1;
             if (blendable)
             {
-                Logg.Log($"Found multiple {nameof(GraphicProvider)} entering color mixing mode!");
+                Debug.Log($"Found multiple {nameof(GraphicProvider)} entering color mixing mode!");
             }
 
             tweener = blendable

@@ -65,7 +65,7 @@ namespace OSK
                 return;
 
             if (playSoundOnClick)
-                Main.Sound.Play("ui_click", false);
+                //Main.Sound.Play("ui_click", false);
 
             if (_isScaler)
                 root.DOScale(defaultSize * hoverScale, duration).SetEase(ease);
