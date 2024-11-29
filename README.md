@@ -71,8 +71,9 @@
 ## 💬 Support
 
 If you have any questions, suggestions, or issues, feel free to create an **Issue** in this repository or reach out to the development team.
-Link Yoputube: https://www.youtube.com/watch?v=8x0ld-eqtBs
-Link FB: https://www.facebook.com/xOskx/
+
+Link Yoputube: https://www.youtube.com/watch?v=8x0ld-eqtBs.
+Link FB: https://www.facebook.com/xOskx/.
 
 Thank you for using **UIFeel**! 🎉
 
