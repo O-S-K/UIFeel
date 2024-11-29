@@ -50,8 +50,9 @@
 - **Position Tweening**: Smoothly move UI elements.
 - **Rotation Tweening**: Add spins or rotations to components.
 - **Scale Tweening**: Animate size changes.
-- **Color Tweening**: Add color transitions for text or images.
-
+- **Graphics Tweening**: Add color transitions for text or images.
+.... more
+  
 ---
 
 ## 🎯 Example Libraries Included
@@ -70,7 +71,8 @@
 ## 💬 Support
 
 If you have any questions, suggestions, or issues, feel free to create an **Issue** in this repository or reach out to the development team.
-Link Demo: https://www.youtube.com/watch?v=8x0ld-eqtBs
+Link Yoputube: https://www.youtube.com/watch?v=8x0ld-eqtBs
+Link FB: https://www.facebook.com/xOskx/
 
 Thank you for using **UIFeel**! 🎉
 
