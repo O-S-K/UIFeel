@@ -770,6 +770,9 @@ namespace OSK
 
         private void OnTweenerStart()
         {
+            if (provider.target == null)
+                return;
+
             if (DotweenProviderSettings.VerifyTargetNeedSetDirty(provider.target))
             {
                 EditorUtility.SetDirty(provider.target);
@@ -778,6 +781,9 @@ namespace OSK
 
         private void OnTweenerUpdating()
         {
+            if (provider.target == null)
+                return;
+
             if (DotweenProviderSettings.VerifyTargetNeedSetDirty(provider.target))
             {
                 EditorUtility.SetDirty(provider.target);
