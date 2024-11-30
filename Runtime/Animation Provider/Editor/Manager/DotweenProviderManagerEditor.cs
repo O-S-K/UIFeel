@@ -1,3 +1,5 @@
+#if UNITY_EDITOR
+
 using DG.DOTweenEditor;
 using Sirenix.OdinInspector.Editor;
 using UnityEditor;
@@ -83,3 +85,4 @@ namespace OSK
         }
     }
 }
+#endif

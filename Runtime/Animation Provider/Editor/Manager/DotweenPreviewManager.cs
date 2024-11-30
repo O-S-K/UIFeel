@@ -1,3 +1,5 @@
+#if UNITY_EDITOR
+
 using DG.DOTweenEditor;
 using DG.Tweening;
 using System.Collections.Generic;
@@ -167,3 +169,4 @@ namespace OSK
         #endregion
     }
 }
+#endif

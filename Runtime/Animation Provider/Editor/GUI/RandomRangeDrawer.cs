@@ -1,4 +1,6 @@
-﻿using UnityEditor;
+﻿#if UNITY_EDITOR
+
+using UnityEditor;
 using UnityEngine;
 
 [CustomPropertyDrawer(typeof(RandomRangeAttribute))]
@@ -25,3 +27,4 @@ public class RandomRangeDrawer : PropertyDrawer
         EditorGUI.EndProperty();
     }
 }
+#endif

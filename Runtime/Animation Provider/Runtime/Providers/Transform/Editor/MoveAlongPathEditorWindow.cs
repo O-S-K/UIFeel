@@ -1,4 +1,5 @@
-using System;
+#if UNITY_EDITOR
+
 using UnityEditor;
 using UnityEngine;
 using DG.Tweening;
@@ -8,7 +9,7 @@ namespace OSK
     public class MoveAlongPathEditorWindow : EditorWindow
     {
         private MoveAlongPathProvider moveAlongPathProvider;
-        public  int indexPathSelect;
+        public int indexPathSelect;
 
 
         [MenuItem("OSK-Framework/Tools/Path Editor/Move Along Path Editor")]
@@ -62,7 +63,7 @@ namespace OSK
                     EditorGUILayout.EndHorizontal();
                 }
             }
-            
+
             GUILayout.Space(20);
             GUILayout.Label("Path Selection " + indexPathSelect, EditorStyles.label);
             GUILayout.Space(20);
@@ -92,6 +93,7 @@ namespace OSK
             Repaint();
         }
 
+#if UNITY_EDITOR
         private void OnSceneGUI(SceneView sceneView)
         {
             if (moveAlongPathProvider == null || moveAlongPathProvider.paths.Count == 0)
@@ -103,37 +105,37 @@ namespace OSK
             {
                 Path path = moveAlongPathProvider.paths[i];
 
-                float handleSize = HandleUtility.GetHandleSize(path.position) * 0.2f; 
-                Handles.color = Color.blue; 
-                
+                float handleSize = HandleUtility.GetHandleSize(path.position) * 0.2f;
+                Handles.color = Color.blue;
+
                 Vector3 newPosition = Handles.FreeMoveHandle(
                     path.position,
                     handleSize,
                     Vector3.zero,
-                    Handles.SphereHandleCap 
+                    Handles.SphereHandleCap
                 );
-                
+
                 if (e.type == EventType.MouseDown && e.button == 0)
                 {
                     indexPathSelect = i + 1;
                 }
-                
+
 
                 if (newPosition != path.position)
                 {
                     Undo.RecordObject(moveAlongPathProvider, "Move Path Point");
                     path.position = newPosition;
-                } 
+                }
             }
-            
-                
+
+
             if (e.type == EventType.MouseDown && e.button == 2 && indexPathSelect != -1)
             {
                 indexPathSelect = -1;
                 moveAlongPathProvider.RemovePathPoint(moveAlongPathProvider.paths[indexPathSelect]);
-                e.Use(); 
+                e.Use();
             }
-           
+
 
             // Handle point addition on Ctrl + Left Click
             if (e.type == EventType.MouseDown && e.button == 0 && e.control)
@@ -142,7 +144,6 @@ namespace OSK
                 AddPathPointAt(mousePos);
                 e.Use(); // Consume the event to prevent further processing
             }
-
 
 
             // Drawing paths
@@ -177,6 +178,7 @@ namespace OSK
                             0
                         );
                     }
+
                     break;
             }
 
@@ -230,6 +232,7 @@ namespace OSK
                 return;
             SceneView.RepaintAll();
         }
+#endif
 
         private void AddPathPointAt(Vector3 position)
         {
@@ -257,7 +260,7 @@ namespace OSK
             for (int i = 1; i <= segments; i++)
             {
                 float t = i / (float)segments;
-                Vector3 pointOnCurve =  CalculateCatmullRom(p0, p1, p2, p3, t);
+                Vector3 pointOnCurve = CalculateCatmullRom(p0, p1, p2, p3, t);
                 Handles.DrawLine(previousPoint, pointOnCurve);
                 previousPoint = pointOnCurve;
             }
@@ -288,6 +291,7 @@ namespace OSK
 
             return uuu * p0 + 3 * uu * t * p1 + 3 * u * tt * p2 + ttt * p3;
         }
+
         public static Vector3 CalculateCatmullRom(Vector3 p0, Vector3 p1, Vector3 p2, Vector3 p3, float t)
         {
             float t2 = t * t;
@@ -304,3 +308,4 @@ namespace OSK
         }
     }
 }
+#endif

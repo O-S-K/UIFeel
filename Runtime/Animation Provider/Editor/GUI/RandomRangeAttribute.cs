@@ -1,3 +1,5 @@
+#if UNITY_EDITOR
+
 using UnityEngine;
 
 public class RandomRangeAttribute : PropertyAttribute
@@ -11,3 +13,4 @@ public class RandomRangeAttribute : PropertyAttribute
         Max = max;
     }
 }
+#endif

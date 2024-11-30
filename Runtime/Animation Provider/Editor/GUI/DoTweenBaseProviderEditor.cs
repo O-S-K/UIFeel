@@ -1,16 +1,17 @@
+#if UNITY_EDITOR
+
 using System;
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
 using DG.Tweening;
-using GameUtil;
-using Sirenix.OdinInspector.Editor;
+using GameUtil; 
 using UnityEngine.UI;
 
 namespace OSK
 {
     [CustomEditor(typeof(DoTweenBaseProvider), true)]
-    public class DoTweenBaseProviderEditor : OdinEditor
+    public class DoTweenBaseProviderEditor : Sirenix.OdinInspector.Editor.OdinEditor
     {
         private DoTweenBaseProvider provider;
         private bool generalParametersFoldout = true;
@@ -801,3 +802,4 @@ namespace OSK
         }
     }
 }
+#endif
