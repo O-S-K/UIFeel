@@ -29,6 +29,7 @@
 
 1. Clone or download this repository.
 2. Import the package into your Unity project.
+3. Import thirdparty (DOTween and Odin).
 
 ---
 
