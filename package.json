@@ -2,5 +2,7 @@
 	"name": "com.osk.uifeel",
 	"version": "1.0.0",
 	"displayName": "UI FEEL",
-	"description": "This is UI Feel" 
-}
+	"description": "UI Feedback enhances user experience by providing visual feedback in your user interface. The folder contains components that help you easily integrate feedback into your game.",
+	"author": "QuyLe", 
+	"unity": "2022.3"
+} 
