@@ -4,7 +4,6 @@ using DG.Tweening;
 
 namespace OSK
 {
-    [DisallowMultipleComponent]
     public class RectPositionProvider : DoTweenBaseProvider
     {
         [HideInInspector] public Vector3 from = Vector3.zero;

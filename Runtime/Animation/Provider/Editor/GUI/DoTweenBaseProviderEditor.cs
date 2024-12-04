@@ -67,6 +67,7 @@ namespace OSK
         {
             generalParametersFoldout =
                 EditorGUILayout.Foldout(generalParametersFoldout, "General Parameters", foldoutStyle);
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("_Script"));
 
             if (generalParametersFoldout)
             {
@@ -141,6 +142,7 @@ namespace OSK
             }
 
             #endregion
+            
             #region Image
             else if (showImage)
             {
