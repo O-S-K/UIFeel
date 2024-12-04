@@ -712,33 +712,6 @@ namespace OSK
         #endregion Event
 
 
-        #region Overidable
-
-        public static event Action<bool> OnSetActiveAllInput;
-        public static event Action<AudioClip> OnPlaySoundByFile;
-        public static event Action<int> OnPlaySoundByIndex;
-
-        void SetActiveAllInput(bool isActivating)
-        {
-            OnSetActiveAllInput?.Invoke(isActivating);
-            AnimationUICustomizable.SetActiveAllInput(isActivating);
-        }
-
-        void PlaySound(AudioClip _SFXFile)
-        {
-            OnPlaySoundByFile?.Invoke(_SFXFile);
-            AnimationUICustomizable.PlaySound(_SFXFile);
-        }
-
-        void PlaySound(int _index)
-        {
-            OnPlaySoundByIndex?.Invoke(_index);
-            AnimationUICustomizable.PlaySound(_index);
-        }
-
-        #endregion
-
-
 #if UNITY_EDITOR
         void ForceRepaint()
         {
