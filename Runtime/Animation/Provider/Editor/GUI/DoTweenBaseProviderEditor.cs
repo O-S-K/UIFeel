@@ -64,7 +64,11 @@ namespace OSK
         {
             generalParametersFoldout =
                 EditorGUILayout.Foldout(generalParametersFoldout, "General Parameters", foldoutStyle);
-            EditorGUILayout.PropertyField(serializedObject.FindProperty("_Script"));
+            SerializedProperty scriptProperty = serializedObject.FindProperty("m_Script");
+            if (scriptProperty != null)
+            {
+                EditorGUILayout.PropertyField(scriptProperty);
+            }
 
             if (generalParametersFoldout)
             {
