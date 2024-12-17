@@ -110,11 +110,12 @@ namespace OSK
 
                 Vector3 newPosition = Handles.FreeMoveHandle(
                     path.position,
+                    Quaternion.identity,
                     handleSize,
                     Vector3.zero,
                     Handles.SphereHandleCap
                 );
-
+                
                 if (e.type == EventType.MouseDown && e.button == 0)
                 {
                     indexPathSelect = i + 1;
