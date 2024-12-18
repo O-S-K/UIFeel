@@ -15,7 +15,7 @@ namespace OSK
         public override object GetStartValue() => from;
         public override object GetEndValue() => to;
 
-        public override void ProgressTween()
+        public override void ProgressTween(bool isPlayBackwards)
         {
             particleSystem.Stop();
             tweener = DOVirtual.Float(from ? 1 : 0, to ? 1 : 0, settings.duration, value =>
@@ -27,7 +27,7 @@ namespace OSK
                     particleSystem.Play();
                 }
             });
-            base.ProgressTween();
+            base.ProgressTween(isPlayBackwards);
         }
 
         public override void Play()

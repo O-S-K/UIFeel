@@ -2,12 +2,12 @@ using DG.Tweening;
 
 namespace OSK
 {
-    public interface IDoTweenProviderBehaviours
+    public interface IDoTweenProvider
     {
         void InitFromMG(bool playOnEnable, bool setAutoKill, UpdateType updateType, bool useUnscaledTime);
         Tweener Tweener { get; }
         bool IsPlaying { get; }
-        void ProgressTween();
+        void ProgressTween(bool isPlayBackwards);
         void Play();
         void Rewind();
         void Stop();

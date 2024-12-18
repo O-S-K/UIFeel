@@ -15,7 +15,7 @@ namespace OSK
         public override object GetStartValue() => from;
         public override object GetEndValue() => to;
 
-        public override void ProgressTween()
+        public override void ProgressTween(bool isPlayBackwards)
         {
             if (image.sprite == null)
             {
@@ -32,7 +32,7 @@ namespace OSK
             target = image;
             image.fillAmount = from;
             tweener = DOTween.To(() => from, y => image.fillAmount = (float)y, to, settings.duration);
-            base.ProgressTween();
+            base.ProgressTween(isPlayBackwards);
         }
 
         public override void Play()

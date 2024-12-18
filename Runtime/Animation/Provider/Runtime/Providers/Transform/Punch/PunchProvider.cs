@@ -27,7 +27,7 @@ namespace OSK
         private Vector3 _originalRotation;
         private Vector3 _originalScale;
 
-        public override void ProgressTween()
+        public override void ProgressTween(bool isPlayBackwards)
         {
             _originalPosition = RootTransform.localPosition;
             _originalRotation = RootTransform.localEulerAngles;
@@ -46,7 +46,7 @@ namespace OSK
                 _ => null
             };
 
-            base.ProgressTween();
+            base.ProgressTween(isPlayBackwards);
         }
 
 

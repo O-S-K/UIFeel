@@ -7,8 +7,8 @@ namespace OSK
 {
     public class DotweenProviderManager : MonoBehaviour
     {
-        public List<IDoTweenProviderBehaviours> Providers => new List<IDoTweenProviderBehaviours>(
-            GetComponentsInChildren<IDoTweenProviderBehaviours>());
+        public List<IDoTweenProvider> Providers => new List<IDoTweenProvider>(
+            GetComponentsInChildren<IDoTweenProvider>());
 
         public bool playOnEnable = true;
         public bool setAutoKill = true;

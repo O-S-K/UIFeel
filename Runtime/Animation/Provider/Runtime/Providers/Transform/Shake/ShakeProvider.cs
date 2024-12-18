@@ -29,7 +29,7 @@ namespace OSK
         public override object GetStartValue() => null;
         public override object GetEndValue() => null;
 
-        public override void  ProgressTween()
+        public override void  ProgressTween(bool isPlayBackwards)
         {
             _originalPosition = RootTransform.localPosition;
             _originalRotation = RootTransform.localEulerAngles;
@@ -46,7 +46,7 @@ namespace OSK
                 TypeShake.Scale => RootTransform.DOShakeScale(settings.duration, rs, vibrato, randomness, fadeOut),
                 _ => null
             };
-            base.ProgressTween();
+            base.ProgressTween(isPlayBackwards);
         }
 
 

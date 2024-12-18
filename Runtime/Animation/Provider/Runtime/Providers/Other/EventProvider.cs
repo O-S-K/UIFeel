@@ -12,9 +12,9 @@ namespace OSK
         public override object GetEndValue() => null;
         
 
-        public override void ProgressTween()
+        public override void ProgressTween(bool isPlayBackwards)
         { 
-            base.ProgressTween();
+            base.ProgressTween(isPlayBackwards);
         }
 
         

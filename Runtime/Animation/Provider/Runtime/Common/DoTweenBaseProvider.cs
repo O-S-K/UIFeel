@@ -5,8 +5,6 @@ using UnityEngine.Events;
 
 namespace OSK
 {
-   
-
     [System.Serializable]
     public class TweenSettings
     {
@@ -19,13 +17,13 @@ namespace OSK
         public Transform root;
         public bool playOnEnable = true;
         public bool setAutoKill = true;
+        public bool isPlayBackwards = false;
 
         [Min(0)] public float delay = 0f;
-        [Min(0)] public float duration = 2f;
+        [Min(0)] public float duration = 1f;
         [Min(-1)] public int loopcount = 0;
 
-        [ShowIf(nameof(loopcount), -1)] 
-        public LoopType loopType = LoopType.Restart;
+        [ShowIf(nameof(loopcount), -1)] public LoopType loopType = LoopType.Restart;
 
         public TypeAnim typeAnim = TypeAnim.Ease;
 
@@ -38,30 +36,47 @@ namespace OSK
         public UpdateType updateType = UpdateType.Normal;
         public bool useUnscaledTime = false;
         public UnityEvent eventCompleted;
+
+        public TweenSettings Clone()
+        {
+            return new TweenSettings
+            {
+                root = root,
+                playOnEnable = playOnEnable,
+                setAutoKill = setAutoKill,
+                isPlayBackwards = isPlayBackwards,
+                delay = delay,
+                duration = duration,
+                loopcount = loopcount,
+                loopType = loopType,
+                typeAnim = typeAnim,
+                ease = ease,
+                curve = curve,
+                updateType = updateType,
+                useUnscaledTime = useUnscaledTime,
+                eventCompleted = eventCompleted
+            };
+        }
     }
 
-    public abstract class DoTweenBaseProvider : MonoBehaviour, IDoTweenProviderBehaviours
+    public abstract class DoTweenBaseProvider : MonoBehaviour, IDoTweenProvider
     {
-        //[HideInInspector]
         public TweenSettings settings;
-        
+
         [HideInInspector] public Object target;
         public Transform RootTransform => settings.root ? settings.root : transform;
         public RectTransform RootRectTransform => settings.root as RectTransform;
 
         public Tweener tweener;
         public Tweener Tweener => tweener;
+        private bool isPlayBackwards = false;
 
         public bool IsPlaying => null != tweener && tweener.IsPlaying();
 
-        public virtual void OnEnable()
-        {
-            if (settings.playOnEnable) Play();
-        }
-
+        public virtual void OnEnable() => Play();
         public virtual void OnDisable() => Stop();
         public virtual void OnDestroy() => Stop();
-        
+
         public abstract object GetStartValue();
         public abstract object GetEndValue();
 
@@ -73,7 +88,7 @@ namespace OSK
             settings.useUnscaledTime = useUnscaledTime;
         }
 
-        public virtual void ProgressTween()
+        public virtual void ProgressTween(bool isPlayBackwards)
         {
             tweener.SetDelay(settings.delay)
                 .SetAutoKill(settings.setAutoKill)
@@ -82,6 +97,12 @@ namespace OSK
                 .SetTarget(target)
                 .OnComplete(() => settings.eventCompleted?.Invoke());
 
+            if (isPlayBackwards)
+            {
+                tweener.From();
+                tweener.Rewind();
+                tweener.Play();
+            }
 
             if (settings.typeAnim == TweenSettings.TypeAnim.Ease)
                 tweener.SetEase(settings.ease);
@@ -89,16 +110,23 @@ namespace OSK
                 tweener.SetEase(settings.curve);
         }
 
+        [ContextMenu("Play")]
         public virtual void Play()
         {
+            if (!settings.playOnEnable)
+                return;
+
             tweener?.Kill();
             tweener = null;
             if (!target)
                 if (tweener != null)
                     target = (UnityEngine.Object)tweener.target;
-            ProgressTween();
-        } 
-        
+
+            isPlayBackwards = settings.isPlayBackwards;
+            ProgressTween(isPlayBackwards);
+        }
+
+
         public float GetDuration() => settings.duration;
 
         public void Preview(float time)
@@ -107,13 +135,23 @@ namespace OSK
             tweener.Goto(time);
         }
 
+        [ContextMenu("PlayBackwards")]
         public void PlayBackwards()
         {
-            tweener?.PlayBackwards();
+            if (!settings.playOnEnable)
+                return;
+
+            tweener?.Kill();
+            tweener = null;
+            if (!target)
+                if (tweener != null)
+                    target = (UnityEngine.Object)tweener.target;
+
+            isPlayBackwards = true;
+            ProgressTween(isPlayBackwards);
         }
 
         public virtual void Rewind() => tweener?.Rewind();
-        public virtual void Backward() => tweener?.PlayBackwards();
 
         public virtual void Stop()
         {

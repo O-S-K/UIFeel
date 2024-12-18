@@ -18,14 +18,14 @@ namespace OSK
         public override object GetStartValue() => from;
         public override object GetEndValue() => to;
 
-        public override void ProgressTween()
+        public override void ProgressTween(bool isPlayBackwards)
         { 
             RootTransform.localEulerAngles = from;
             tweener = isLocal
                 ? RootTransform.DOLocalRotate(to, settings.duration, rotateMode)
                 : RootTransform.DORotate(to, settings.duration, rotateMode);
             
-            base.ProgressTween();
+            base.ProgressTween(isPlayBackwards);
         }
 
  

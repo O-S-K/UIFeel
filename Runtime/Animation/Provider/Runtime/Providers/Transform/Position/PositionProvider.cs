@@ -16,7 +16,7 @@ namespace OSK
         public bool isResetToFrom = false;
         public bool isLocal = true; 
         
-        public override void ProgressTween()
+        public override void ProgressTween(bool isPlayBackwards)
         {
             if (isLocal)
                 transform.localPosition = from;
@@ -26,7 +26,7 @@ namespace OSK
             tweener = isLocal
                 ? transform.DOLocalMove(to, settings.duration)
                 : transform.DOMove(to, settings.duration);;
-            base.ProgressTween();
+            base.ProgressTween(isPlayBackwards);
         }
 
         public override void Play()

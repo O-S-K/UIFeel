@@ -32,21 +32,20 @@ namespace OSK
 
         #region Extension Methods
 
-        public static void StopPreview(this IDoTweenProviderBehaviours provider)
+        public static void StopPreview(this IDoTweenProvider provider)
         {
             if (null == provider) return;
             TweenerPostProcess(provider);
         }
 
-        public static void StartPreview(this IDoTweenProviderBehaviours provider, TweenCallback OnStart = null,
-            TweenCallback OnUpdate = null)
+        public static void StartPreview(this IDoTweenProvider provider, TweenCallback OnStart = null, TweenCallback OnUpdate = null)
         {
             if (null == provider) return;
             provider.Play();
-            var tweener = provider.Tweener;
-            if (!tweeners.Contains(tweener))
+            var tween = provider.Tweener;
+            if (!tweeners.Contains(tween))
             {
-                tweeners.Add(tweener);
+                tweeners.Add(tween);
             }
 
             if (!DOTweenEditorPreview.isPreviewing)
@@ -54,9 +53,9 @@ namespace OSK
                 DOTweenEditorPreview.Start();
             }
 
-            DOTweenEditorPreview.PrepareTweenForPreview(tweener);
+            DOTweenEditorPreview.PrepareTweenForPreview(tween);
             // Register callback, be sure to add the listener at the end
-            tweener.OnComplete(() => TweenerPostProcess(provider))
+            tween.OnComplete(() => TweenerPostProcess(provider))
                 .OnStart(OnStart)
                 .OnUpdate(OnUpdate);
         }
@@ -86,7 +85,7 @@ namespace OSK
             return manager.Providers.Any(v => v.IsPreviewing());
         }
 
-        public static bool IsPreviewing(this IDoTweenProviderBehaviours provider)
+        public static bool IsPreviewing(this IDoTweenProvider provider)
         {
             return !EditorApplication.isPlayingOrWillChangePlaymode
                    && null != provider
@@ -100,7 +99,7 @@ namespace OSK
 
         #region Assistance Funtion
 
-        static void SetHideFlags(this IDoTweenProviderBehaviours provider, HideFlags hideFlags)
+        static void SetHideFlags(this IDoTweenProvider provider, HideFlags hideFlags)
         {
             ((Component)provider).gameObject.hideFlags = hideFlags;
         }
@@ -152,7 +151,7 @@ namespace OSK
             }
         }
 
-        private static void TweenerPostProcess(IDoTweenProviderBehaviours provider)
+        private static void TweenerPostProcess(IDoTweenProvider provider)
         {
             var tweener = provider.Tweener;
             if (tweeners.Contains(tweener))

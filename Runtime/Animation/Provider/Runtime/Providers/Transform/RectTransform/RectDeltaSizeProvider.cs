@@ -12,12 +12,12 @@ namespace OSK
         public override object GetStartValue() => from;
         public override object GetEndValue() => to;
         
-        public override void ProgressTween()
+        public override void ProgressTween(bool isPlayBackwards)
         {
             RootRectTransform.sizeDelta = from;
             target = RootRectTransform;
             tweener = RootRectTransform.DOSizeDelta(from,settings. duration);
-            base.ProgressTween();
+            base.ProgressTween(isPlayBackwards);
         }
  
         public override void Play()

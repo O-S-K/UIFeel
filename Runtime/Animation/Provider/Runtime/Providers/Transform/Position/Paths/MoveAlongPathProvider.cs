@@ -22,7 +22,7 @@ namespace OSK
         public override object GetStartValue() => null;
         public override object GetEndValue() => null;
 
-        public override void ProgressTween()
+        public override void ProgressTween(bool isPlayBackwards)
         {
             if (paths == null || paths.Count == 0)
             {
@@ -63,7 +63,7 @@ namespace OSK
                     : transform.DOPath(pathPositions, settings.duration, pathType);
             }
             
-            base.ProgressTween();
+            base.ProgressTween(isPlayBackwards);
         }
 
   

@@ -12,12 +12,12 @@ namespace OSK
         public override object GetStartValue() => from;
         public override object GetEndValue() => to;
 
-        public override void ProgressTween()
+        public override void ProgressTween(bool isPlayBackwards)
         {
             gameObject.SetActive(from);
             tweener = DOVirtual.Float(from ? 1 : 0, to ? 1 : 0, settings.duration,
                 value => gameObject.SetActive(value > 0));
-            base.ProgressTween();
+            base.ProgressTween(isPlayBackwards);
         }
 
        

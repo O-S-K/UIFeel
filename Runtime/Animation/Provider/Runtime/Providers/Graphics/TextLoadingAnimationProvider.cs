@@ -30,7 +30,7 @@ namespace OSK
             }
         }
 
-        public override void ProgressTween()
+        public override void ProgressTween(bool isPlayBackwards)
         {
             if (text)
             {
@@ -44,7 +44,7 @@ namespace OSK
                 Debug.LogError("Text is null");
             }
 
-            base.ProgressTween();
+            base.ProgressTween(isPlayBackwards);
         }
 
 

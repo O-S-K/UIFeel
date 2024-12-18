@@ -14,14 +14,14 @@ namespace OSK
         public override object GetStartValue() => from;
         public override object GetEndValue() => to;
 
-        public override void ProgressTween()
+        public override void ProgressTween(bool isPlayBackwards)
         {
             text = text ? text : GetComponent<Text>();
 
             target = text;
             text.text = from.ToString();
             tweener = DOTween.To(() => 0, y => text.text = y.ToString(), to, settings.duration);
-            base.ProgressTween();
+            base.ProgressTween(isPlayBackwards);
         }
 
 
